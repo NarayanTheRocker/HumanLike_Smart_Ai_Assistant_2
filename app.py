@@ -15,15 +15,9 @@ from pydub import AudioSegment
 import secrets # --- ADDED: For generating a default secret key ---
 
 # --- Flask App Setup ---
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'templates'))
-STATIC_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'static'))
 
-app = Flask(
-    __name__,
-    template_folder=TEMPLATE_DIR,
-    static_folder=STATIC_DIR
-)
+
+app = Flask(__name__)
 
 # --- ADDED: Secret Key for Sessions ---
 app.secret_key = os.getenv("FLASK_SECRET_KEY", secrets.token_hex(16))
